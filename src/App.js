@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import MapComponent from "./map/map";
+import Weather from "./components/Weather/Weather";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function App(){
+  const [data, setData] = useState({name:'Name'})
+  const [getLoc, setGetLoc]  = useState(false)
+
+  async function updateData(data){
+    let main_info = await data
+    setData({main_info})
+  }
+
+  function updateGetLoc(){
+    setGetLoc(true)
+  }
+
+  function resetGetLoc(){
+    setGetLoc(false)
+  }
+
+  return(
+    <div className="app">
+      <MapComponent updateData={updateData} getLoc={getLoc} resetGetLoc={resetGetLoc}/>
+      <Weather data={data} setGetLoc={updateGetLoc}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

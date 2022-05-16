@@ -1,0 +1,61 @@
+.weather{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    padding: 0;
+    transition: 1s;
+}
+.preview{
+    transform: translateY(-100%);
+    opacity: 1;
+    background: white;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.preview div{
+    text-align: center;
+    flex: 1;
+    min-height: 70px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-right: 1px solid black;
+}
+.preview div:nth-child(4), .preview div:nth-child(5){
+    border-right: none;
+}
+.preview img{
+    height: 45px;
+    width: 45px;
+}
+.preview img, .preview svg{
+    margin-left: 10px;
+}
+.preview .my_location{
+    background: rgba(14, 74, 107, 1);
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+@media (max-width: 900px) {
+    .preview{
+        flex-wrap: wrap;
+    }
+    .preview div{
+        flex-basis: calc(50% - 2px);
+        border: 1px solid black;
+        font-size: 20px;
+    }
+    .preview div:nth-child(4), .preview div:nth-child(5){
+        border-right: 1px solid black;
+    }
+    .show_more{
+        width: 100%;
+    }
+}
